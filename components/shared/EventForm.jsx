@@ -26,7 +26,6 @@ import { eventDefaultValues } from '@/constants'
 
 import { Textarea } from '@/components/ui/textarea'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import DatePicker from 'react-date-picker'
 import 'react-date-picker/dist/DatePicker.css'
 import 'react-calendar/dist/Calendar.css'
@@ -35,7 +34,6 @@ import { Checkbox } from '../ui/checkbox'
 import { useRouter } from 'next/navigation'
 import { createEvent, updateEvent } from '@/lib/actions.js/event.actions'
 import { useToast } from '@/components/ui/use-toast'
-import { revalidatePath } from 'next/cache'
 
 const EventForm = ({ type, event, eventId }) => {
   const [file, setFile] = useState('')
@@ -124,7 +122,7 @@ const EventForm = ({ type, event, eventId }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-6"
       >
         {/* ------------------- title and categories --------------------------- */}
         <div className="flex flex-col gap-4 md:flex-row">
@@ -179,7 +177,7 @@ const EventForm = ({ type, event, eventId }) => {
         </div>
 
         {/*--------------------- descriptions and file uploader----------------- */}
-        <div className="flex flex-col gap-4 md:flex-row">
+        <div className="w-full flex flex-col gap-6 justify-between md:flex-row">
           <FormField
             control={form.control}
             name="description"
@@ -212,7 +210,10 @@ const EventForm = ({ type, event, eventId }) => {
             )}
           /> */}
           {/* <FileBase64 multiple={false} onDone={({ file }) => setFile(file)} /> */}
-          File <input type="file" onChange={handleFile} />
+          <div className="flex flex-row gap-2 self-start  md:self-center">
+            <span>File:</span>
+            <input type="file" onChange={handleFile} className="inline" />
+          </div>
         </div>
 
         {/* ---------------------- location / address -------------------------- */}
@@ -223,12 +224,12 @@ const EventForm = ({ type, event, eventId }) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center  w-full overflow-hidden rounded-lg bg-grey-50 ">
                     <Input
                       placeholder="Event location or Online"
                       {...field}
                       value={field.value || ''}
-                      className="input-field"
+                      className=""
                     />
                   </div>
                 </FormControl>
@@ -239,22 +240,25 @@ const EventForm = ({ type, event, eventId }) => {
         </div>
 
         {/* ---------------------- start date and end date ----------------- */}
-        <div className="flex flex-col gap-4 md:flex-row">
+        <div className="flex flex-col gap-4 md:flex-row ">
           <FormField
             control={form.control}
             name="startDate"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full ">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full  rounded-full bg-grey-50 px-4 py-2">
-                    <p className="ml-3 whitespace-nowrap text-grey-600"></p>
-                    Start Date:
-                    <DatePicker
-                      format="y-MM-dd"
-                      onChange={(date) => field.onChange(date)}
-                      value={field.value}
-                      className="rounded-lg border-blue-500 bg-blue-200"
-                    />
+                  <div className="w-full flex flex-row  gap-2 ">
+                    <p className="whitespace-nowrap text-grey-600 translate-y-1 ">
+                      Start Date:
+                    </p>
+                    <div className="pb-1">
+                      <DatePicker
+                        format="y-MM-dd"
+                        onChange={(date) => field.onChange(date)}
+                        value={field.value}
+                        className="date-picker "
+                      />
+                    </div>
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -268,16 +272,18 @@ const EventForm = ({ type, event, eventId }) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full  rounded-full bg-grey-50 px-4 py-2">
-                    <p className="ml-3 whitespace-nowrap text-grey-600">
+                  <div className=" w-full flex flex-row gap-2 ">
+                    <p className="whitespace-nowrap text-grey-600 mr-[6px] md:mr-0 translate-y-1">
                       End Date:
                     </p>
-                    <DatePicker
-                      format="y-MM-dd"
-                      onChange={(date) => field.onChange(date)}
-                      value={field.value}
-                      className="rounded-lg border-blue-500 bg-blue-200"
-                    />
+                    <div>
+                      <DatePicker
+                        format="y-MM-dd"
+                        onChange={(date) => field.onChange(date)}
+                        value={field.value}
+                        className="date-picker "
+                      />
+                    </div>
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -287,14 +293,14 @@ const EventForm = ({ type, event, eventId }) => {
         </div>
 
         {/* ----------------------- price and URL -------------------------------- */}
-        <div className="flex flex-col gap-4 md:flex-row">
+        <div className="w-full flex flex-col gap-4 md:flex-row">
           <FormField
             control={form.control}
             name="price"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex flex-row items-center justify-between gap-2 h-[54px] w-full  rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex flex-row items-center justify-between gap-4  w-full  rounded-full bg-grey-50 ">
                     <Input
                       type="number"
                       placeholder="Price"
@@ -308,10 +314,10 @@ const EventForm = ({ type, event, eventId }) => {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <div className="flex items-center">
+                            <div className="flex ">
                               <label
                                 htmlFor="isFree"
-                                className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                className="whitespace-nowrap pr-2 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                               >
                                 Free Ticket
                               </label>
@@ -339,12 +345,12 @@ const EventForm = ({ type, event, eventId }) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center  w-full overflow-hidden rounded-lg bg-grey-50 ">
                     <Input
                       placeholder="URL"
                       {...field}
                       value={field.value || ''}
-                      className="input-field"
+                      className=""
                     />
                   </div>
                 </FormControl>

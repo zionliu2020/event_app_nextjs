@@ -19,10 +19,9 @@ export default async function Home({ searchParams }) {
   return (
     <main className="w-full  p-4 flex-1 flex flex-col justify-around items-center bg-gray-100">
       <EventFilter />
+
       {/* <EventListing /> */}
       <EventListing events={events} />
-
-      <div>hi</div>
     </main>
   )
 }

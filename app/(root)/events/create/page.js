@@ -2,10 +2,14 @@ import EventForm from '@/components/shared/EventForm'
 
 const page = () => {
   return (
-    <div className="flex-1 w-full flex flex-col justify-around items-center bg-gray-100">
-      <h1>Create Event</h1>
-      <EventForm type="Create" />
-    </div>
+    <section className="flex-1 w-full  bg-gray-100">
+      <h1 className="font-semibold text-xl text-center py-8 text-indigo-800">
+        Create Event
+      </h1>
+      <div className="w-full p-4 sm:w-4/5 mx-auto">
+        <EventForm type="Create" />
+      </div>
+    </section>
   )
 }
 

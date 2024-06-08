@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="p-4 flex flex-row justify-around items-center">
       <div>
         <Link href="/">
-          <h1>Event Hub</h1>
+          <h1 className="font-bold text-2xl">Event Hub</h1>
         </Link>
       </div>
       <ul>
