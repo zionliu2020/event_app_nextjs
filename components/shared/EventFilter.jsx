@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { Input } from '../ui/input'
-import { Checkbox } from '../ui/checkbox'
 import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useDebounce } from '@uidotdev/usehooks'
@@ -18,8 +17,6 @@ import { categories } from '@/constants'
 
 const EventFilter = () => {
   const [query, setQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearchTerm = useDebounce(query, 300)
 
   const router = useRouter()

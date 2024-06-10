@@ -85,8 +85,7 @@ const EventForm = ({ type, event, eventId }) => {
 
         if (updatedEvent) {
           form.reset()
-          // revalidatePath('/')
-          // router.push(`/events/${updatedEvent._id}`)
+
           toast({
             title: 'Done',
             description: 'Event Updated!',
@@ -194,22 +193,7 @@ const EventForm = ({ type, event, eventId }) => {
               </FormItem>
             )}
           />
-          {/* <FormField
-            control={form.control}
-            name="imageUrl"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl className="h-72">
-                  <FileBase64
-                    multiple={false}
-                    onDone={({ file }) => field.onChange(file)}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
-          {/* <FileBase64 multiple={false} onDone={({ file }) => setFile(file)} /> */}
+
           <div className="flex flex-row gap-2 self-start  md:self-center">
             <span>File:</span>
             <input type="file" onChange={handleFile} className="inline" />

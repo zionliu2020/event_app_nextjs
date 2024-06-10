@@ -9,18 +9,6 @@ import {
 } from '@/components/ui/select'
 import { categories } from '@/constants'
 import { startTransition, useEffect, useState } from 'react'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import { Input } from '../ui/input'
 
 const Dropdown = ({ onChangeHandler }) => {
   useEffect(() => {}, [onChangeHandler])
@@ -38,12 +26,6 @@ const Dropdown = ({ onChangeHandler }) => {
               {category.name}
             </SelectItem>
           ))}
-
-          {/* <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem> */}
         </SelectGroup>
       </SelectContent>
     </Select>
