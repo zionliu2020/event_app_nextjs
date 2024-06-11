@@ -56,7 +56,7 @@ const EventCard = ({ event }) => {
 
   if (event)
     return (
-      <div className="relative w-full max-h-[500px] overflow-scroll bg-white border-gray-100 shadow-lg rounded-sm">
+      <div className="relative w-full max-h-[500px] overflow-hidden bg-white border-gray-100 shadow-lg rounded-sm">
         <div className="relative top-0 left-0 ">
           <Link href={`/events/${event._id}`}>
             <Image

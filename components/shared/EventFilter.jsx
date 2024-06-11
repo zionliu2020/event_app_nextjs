@@ -62,7 +62,7 @@ const EventFilter = () => {
   }, [debouncedSearchTerm])
 
   return (
-    <section className="event-filter w-4/5 max-w-[600px] flex flex-col md:flex-row gap-2 my-4">
+    <section className="event-filter sticky top-2 bg-white/40 rounded-lg p-2 z-20  w-4/5 max-w-[600px] flex flex-col md:flex-row gap-2 my-4">
       <div className="relative  basis-3/5">
         <Input
           type="text"

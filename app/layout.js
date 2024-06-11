@@ -2,6 +2,7 @@ import Navbar from '@/components/shared/Navbar'
 import './globals.css'
 import Footer from '@/components/shared/Footer'
 import { Toaster } from '@/components/ui/toaster'
+import ScrollButton from '@/components/shared/ScrollButton'
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,11 +12,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="w-full min-h-screen flex flex-col">
+      <body className="w-full relative min-h-screen flex flex-col">
         <Navbar />
         {children}
         <Footer />
         <Toaster />
+        <div className="inline w-[50px] ml-[88%] md:ml-[95%] sticky bottom-40  ">
+          <ScrollButton />
+        </div>
       </body>
     </html>
   )
