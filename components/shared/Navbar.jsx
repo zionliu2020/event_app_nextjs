@@ -9,7 +9,10 @@ const Navbar = () => {
           <h1 className="font-bold text-2xl">Event Hub</h1>
         </Link>
       </div>
-      <ul>
+      <ul className="flex flex-row justify-around gap-4">
+        <li className="hover:underline">
+          <Link href="/">Home</Link>
+        </li>
         <li className="hover:underline">
           <Link href="/events/create">Create Event</Link>
         </li>
