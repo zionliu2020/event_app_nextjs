@@ -57,6 +57,7 @@ const EventCard = ({ event }) => {
   if (event)
     return (
       <div className="relative w-full max-h-[500px] overflow-hidden bg-white border-gray-100 shadow-lg rounded-sm">
+        {/* --------------card image------------ */}
         <div className="relative top-0 left-0 ">
           <Link href={`/events/${event._id}`}>
             <Image
@@ -157,42 +158,50 @@ const EventCard = ({ event }) => {
             {event.category}
           </Badge>
         </div>
+
+        {/* --------------card content---------- */}
         <CardHeader>
-          <CardTitle>{event.title ? event.title : 'this is a title'}</CardTitle>
-          <div>
-            <p>Price: ${price}</p>
-          </div>
-          <div>
-            <p>Start Date: {dayjs(event.startDate).format('MM/DD/YYYY')}</p>
-          </div>
-          <div>
-            <p>End Date: {dayjs(event.endDate).format('MM/DD/YYYY')}</p>
-          </div>
+          <CardTitle className="">
+            {event.title ? event.title : 'this is a title'}
+          </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-row ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-            />
-          </svg>
-          <p className="mr-2">Location:</p>
-          <p> {event.location}</p>
+        <CardContent>
+          <div className="card-info mb-4">
+            <div>
+              <p>Price: ${price}</p>
+            </div>
+            <div>
+              <p>Start Date: {dayjs(event.startDate).format('MM/DD/YYYY')}</p>
+            </div>
+            <div>
+              <p>End Date: {dayjs(event.endDate).format('MM/DD/YYYY')}</p>
+            </div>
+          </div>
+          <div className="card-address flex flex-row leading-tight ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+              />
+            </svg>
+            <p className="mx-2">Location:</p>
+            <p> {event.location}</p>
+          </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="card-description">
           {event.description ? event.description : 'description'}
         </CardFooter>
       </div>

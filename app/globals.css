@@ -1,3 +1,7 @@
+@import url('https://fonts.font.im/css?family=Lato');
+@import url('https://fonts.font.im/css?family=Merriweather');
+@import url('https://fonts.font.im/css?family=Josefin+Sans');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -76,7 +80,20 @@
 }
 
 @layer components {
+  /* ------------event form------------ */
   .date-picker {
     @apply flex flex-row bg-blue-200;
+  }
+
+  /* -------------event card----------- */
+  .card-info {
+    font-family: 'Lato', sans-serif;
+  }
+  .card-description {
+    font-family: 'Merriweather', serif;
+  }
+  .card-address {
+    @apply font-semibold;
+    font-family: 'Josefin Sans', sans-serif;
   }
 }
